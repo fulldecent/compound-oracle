@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -eo pipefail
+
+# TODO: Less bourne-again
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+proj_root="$dir/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/set-token-prices {network}"
+	echo ""
+	echo "calls price oracle's setPrice for each known token based on networks/{network}.json"
+	exit 1
+fi
+
+cd "$proj_root" && NETWORK="$network" ETHEREUM_KEY_POSTFIX="poster" truffle exec --network="$network" "$proj_root/scripts/javascript/setTokenPrices.js"

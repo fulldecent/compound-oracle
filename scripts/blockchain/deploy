@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -eo pipefail
+
+# TODO: Less bourne-again
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+proj_root="$dir/../.."
+
+network="$1"
+
+# Poster address is not from a deployed contract so must be passed in.
+poster_address="$2"
+
+# Use default poster address in development
+if [ -z "$poster_address" -a "$network" == "development" ]; then
+	poster_address=`node "$proj_root/scripts/javascript/getAccount.js"`
+fi
+
+if [ -z "$network" ] || [ -z "$poster_address" ]; then
+	echo "usage: scripts/blockchain/deploy {network} {poster_address}"
+	echo ""
+	echo "deploys price oracle"
+	exit 1
+fi
+
+export POSTER_ADDRESS="$poster_address"
+
+cd "$proj_root" && truffle deploy --network="$network" --reset

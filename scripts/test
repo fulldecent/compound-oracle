@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+dir="$(cd "$(dirname "$0")" && pwd -P)"
+proj_root="$dir/.."
+
+poster_address=`node "$proj_root/scripts/javascript/getAccount.js"`
+
+export POSTER_ADDRESS="$poster_address"
+
+"$proj_root/node_modules/truffle/build/cli.bundled.js" test --network test $@
