@@ -5,7 +5,7 @@ Compound Price Oracle
 
 The Compound Price Oracle receives price updates from a poster (who pulls the prices from exchanges). The price oracle verifies the prices are within valid ranges, and if so, stores the prices so they can be accessed by the Compound Money Market.
 
-See the [Compound Price Oracle Specification](https://github.com/compound-finance/compound-oracle/tree/master/docs/Oracle-Specification.pdf), explaining in plain English how the protocol operates.
+See the [Compound Price Oracle Specification](docs/Oracle-Specification.md), explaining in plain English how the protocol operates.
 
 Contracts
 =========
@@ -48,14 +48,14 @@ You can then compile and deploy the contracts with:
 Testing
 -------
 Contract tests are defined under the [test
-directory](https://github.com/compound-finance/compound-oracle/tree/master/test). To run the tests run:
+directory](test). To run the tests run:
 
     scripts/test
 
 or with inspection (visit chrome://inspect) and look for a remote target after running:
 
     node --inspect node_modules/truffle-core/cli.js test
-    
+
 Assertions used in our tests are provided by [ChaiJS](http://chaijs.com).
 
 Code Coverage
