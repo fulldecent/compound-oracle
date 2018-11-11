@@ -154,4 +154,4 @@ For any concerns with the protocol, open an issue or visit us on [Discord](https
 
 For security concerns, please email [security@compound.finance](mailto:security@compound.finance).
 
-_© Copyright 2018, Compound Labs_
+_© Copyright 2018, Compound Labs, Inc._
